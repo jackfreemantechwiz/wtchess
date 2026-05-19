@@ -3,36 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Westtown Chess Club</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/wtchess/style.css?v=10">
 </head>
 <body>
 
   <header>
     <h1>Westtown Chess Club</h1>
-    <p>Live Chess.com rankings and in-person tournament standings</p>
+    <p>Live Chess.com rapid rankings and in-person tournament standings</p>
   </header>
 
   <nav>
-    <button class="tab-button active" onclick="showTab('home')">Home</button>
-    <button class="tab-button" onclick="showTab('elo')">ELO Rankings</button>
-    <button class="tab-button" onclick="showTab('record')">Record Rankings</button>
-    <button class="tab-button" onclick="showTab('tournament')">Tournament Wins</button>
+    <button class="tab-button active" onclick="showTab('home', this)">Home</button>
+    <button class="tab-button" onclick="showTab('elo', this)">ELO Rankings</button>
+    <button class="tab-button" onclick="showTab('record', this)">Record Rankings</button>
+    <button class="tab-button" onclick="showTab('tournament', this)">Tournament Wins</button>
   </nav>
 
   <main>
-
     <section id="home" class="tab-content active">
       <h2>Club Dashboard</h2>
-      <p>This website automatically pulls rapid ratings and records from Chess.com.</p>
+      <p id="loadingMessage">Loading live Chess.com stats...</p>
 
       <div class="card-grid">
         <div class="card">
-          <h3>Top ELO Player</h3>
+          <h3>Top Rapid ELO</h3>
           <p id="topElo">Loading...</p>
         </div>
 
         <div class="card">
-          <h3>Best Record</h3>
+          <h3>Best Win Rate</h3>
           <p id="topRecord">Loading...</p>
         </div>
 
@@ -45,7 +44,6 @@
 
     <section id="elo" class="tab-content">
       <h2>Players Ranked by Chess.com Rapid ELO</h2>
-
       <table>
         <thead>
           <tr>
@@ -61,7 +59,6 @@
 
     <section id="record" class="tab-content">
       <h2>Players Ranked by Win Rate</h2>
-
       <table>
         <thead>
           <tr>
@@ -95,13 +92,12 @@
         <tbody id="tournamentTable"></tbody>
       </table>
     </section>
-
   </main>
 
   <footer>
     <p>Westtown Chess Club</p>
   </footer>
 
-  <script src="./script.js?v=3"></script>
+  <script src="/wtchess/script.js?v=10"></script>
 </body>
 </html>
