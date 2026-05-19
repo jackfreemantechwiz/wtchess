@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Westtown Chess Club</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,7 +9,7 @@
 
   <header>
     <h1>Westtown Chess Club</h1>
-    <p>Track rankings, records, tournaments, and club progress.</p>
+    <p>Live Chess.com rankings and in-person tournament standings</p>
   </header>
 
   <nav>
@@ -18,59 +17,50 @@
     <button class="tab-button" onclick="showTab('elo')">ELO Rankings</button>
     <button class="tab-button" onclick="showTab('record')">Record Rankings</button>
     <button class="tab-button" onclick="showTab('tournament')">Tournament Wins</button>
-    <button class="tab-button" onclick="showTab('schedule')">Schedule</button>
   </nav>
 
   <main>
 
     <section id="home" class="tab-content active">
       <h2>Club Dashboard</h2>
-
-      <div class="intro-box">
-        Welcome to the Westtown Chess Club website. This site helps organize club members by ELO rating, match record, and tournament success.
-      </div>
-
-      <div class="chess-board" id="board"></div>
+      <p>This website automatically pulls rapid ratings and records from Chess.com.</p>
 
       <div class="card-grid">
         <div class="card">
           <h3>Top ELO Player</h3>
-          <p id="topElo"></p>
+          <p id="topElo">Loading...</p>
         </div>
 
         <div class="card">
           <h3>Best Record</h3>
-          <p id="topRecord"></p>
+          <p id="topRecord">Loading...</p>
         </div>
 
         <div class="card">
           <h3>Top Tournament Player</h3>
-          <p id="topTournament"></p>
+          <p id="topTournament">Loading...</p>
         </div>
       </div>
     </section>
 
-
     <section id="elo" class="tab-content">
-      <h2>Players Ranked by ELO</h2>
+      <h2>Players Ranked by Chess.com Rapid ELO</h2>
 
       <table>
         <thead>
           <tr>
             <th>Rank</th>
             <th>Name</th>
-            <th>Grade</th>
-            <th>ELO</th>
+            <th>Chess.com Username</th>
+            <th>Rapid ELO</th>
           </tr>
         </thead>
-
         <tbody id="eloTable"></tbody>
       </table>
     </section>
 
-
     <section id="record" class="tab-content">
-      <h2>Players Ranked by Record</h2>
+      <h2>Players Ranked by Win Rate</h2>
 
       <table>
         <thead>
@@ -79,7 +69,39 @@
             <th>Name</th>
             <th>Wins</th>
             <th>Losses</th>
-            <th>Win Percentage</th>
+            <th>Draws</th>
+            <th>Win Rate</th>
           </tr>
         </thead>
+        <tbody id="recordTable"></tbody>
+      </table>
+    </section>
+
+    <section id="tournament" class="tab-content">
+      <h2>In-Person Tournament Rankings</h2>
+      <p>Scoring: 1st place = 5 points, 2nd place = 3 points, 3rd place = 1 point.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>1st Place</th>
+            <th>2nd Place</th>
+            <th>3rd Place</th>
+            <th>Total Points</th>
+          </tr>
+        </thead>
+        <tbody id="tournamentTable"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Westtown Chess Club</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
