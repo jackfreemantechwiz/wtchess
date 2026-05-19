@@ -1,45 +1,16 @@
 const players = [
-  {
-    name: "Logan",
-    chessUsername: "logmanpower",
-    first: 0,
-    second: 0,
-    third: 0
-  },
-  {
-    name: "Player 2",
-    chessUsername: "trdij",
-    first: 0,
-    second: 0,
-    third: 0
-  },
-  {
-    name: "Player 3",
-    chessUsername: "mus_del",
-    first: 0,
-    second: 0,
-    third: 0
-  },
-  {
-    name: "Player 4",
-    chessUsername: "C1ay_Bird",
-    first: 0,
-    second: 0,
-    third: 0
-  },
-  {
-    name: "Player 5",
-    chessUsername: "cutydaeheecho",
-    first: 0,
-    second: 0,
-    third: 0
-  }
+  { name: "Logan", chessUsername: "logmanpower", first: 0, second: 0, third: 0 },
+  { name: "Player 2", chessUsername: "trdij", first: 0, second: 0, third: 0 },
+  { name: "Player 3", chessUsername: "mus_del", first: 0, second: 0, third: 0 },
+  { name: "Player 4", chessUsername: "C1ay_Bird", first: 0, second: 0, third: 0 },
+  { name: "Player 5", chessUsername: "cutydaeheecho", first: 0, second: 0, third: 0 }
 ];
 
 let updatedPlayers = [];
 
 async function getChessStats(player) {
-  const url = `https://api.chess.com/pub/player/${player.chessUsername}/stats`;
+  const username = player.chessUsername.toLowerCase();
+  const url = `https://api.chess.com/pub/player/${username}/stats`;
 
   try {
     const response = await fetch(url);
@@ -67,7 +38,7 @@ async function getChessStats(player) {
       wins: data.chess_rapid.record.win,
       losses: data.chess_rapid.record.loss,
       draws: data.chess_rapid.record.draw,
-      status: "Active"
+      status: "Loaded"
     };
 
   } catch (error) {
@@ -83,15 +54,18 @@ async function getChessStats(player) {
 }
 
 async function loadAllPlayers() {
-  updatedPlayers = await Promise.all(players.map(player => getChessStats(player)));
+  updatedPlayers = await Promise.all(players.map(getChessStats));
 
   fillEloTable();
   fillRecordTable();
   fillTournamentTable();
   fillDashboard();
+
+  document.getElementById("loadingMessage").textContent =
+    "Stats loaded from Chess.com. Refresh the page to update rankings.";
 }
 
-function showTab(tabName) {
+function showTab(tabName, buttonClicked) {
   const tabs = document.querySelectorAll(".tab-content");
   const buttons = document.querySelectorAll(".tab-button");
 
@@ -99,7 +73,7 @@ function showTab(tabName) {
   buttons.forEach(button => button.classList.remove("active"));
 
   document.getElementById(tabName).classList.add("active");
-  event.target.classList.add("active");
+  buttonClicked.classList.add("active");
 }
 
 function tournamentPoints(player) {
@@ -180,7 +154,7 @@ function fillDashboard() {
   const topTournamentPlayer = [...players].sort((a, b) => tournamentPoints(b) - tournamentPoints(a))[0];
 
   document.getElementById("topElo").textContent =
-    `${topEloPlayer.name} - ${topEloPlayer.elo} Rapid ELO`;
+    `${topEloPlayer.name} - ${topEloPlayer.elo === 0 ? topEloPlayer.status : topEloPlayer.elo + " Rapid ELO"}`;
 
   document.getElementById("topRecord").textContent =
     `${topRecordPlayer.name} - ${winPercentage(topRecordPlayer)}% Win Rate`;
