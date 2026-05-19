@@ -1,44 +1,97 @@
 * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f3f0e8;
+  color: #222;
+}
+
+header {
+  background-color: #123524;
+  color: white;
+  text-align: center;
+  padding: 35px;
+}
+
+header h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+nav {
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav button {
+  background: none;
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+nav button:hover,
+nav button.active {
+  background-color: #d4af37;
+  color: black;
+}
+
+main {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto;
+}
+
+.tab-content {
+  display: none;
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.tab-content.active {
+  display: block;
+}
+
+h2 {
+  color: #123524;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #d4af37;
+  padding-bottom: 8px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+.card-grid {
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 20px;
   margin-top: 20px;
 }
 
 .card {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
   padding: 20px;
   border-radius: 12px;
-  border: 2px solid #e1e1e1;
+  border: 2px solid #ddd;
   text-align: center;
 }
 
 .card h3 {
   color: #1f5c3a;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
-
-.chess-board {
-  width: 220px;
-  height: 220px;
-  margin: 20px auto;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  border: 5px solid #222;
-}
-
-.square {
-  width: 100%;
-  height: 100%;
-}
-
-.light {
-  background: #f0d9b5;
-}
-
-.dark {
-  background: #769656;
-}
-
 
 table {
   width: 100%;
@@ -47,11 +100,10 @@ table {
 }
 
 th {
-  background: #123524;
+  background-color: #123524;
   color: white;
   padding: 14px;
 }
-
 
 td {
   padding: 13px;
@@ -60,11 +112,11 @@ td {
 }
 
 tr:nth-child(even) {
-  background: #f7f7f7;
+  background-color: #f7f7f7;
 }
 
 tr:hover {
-  background: #fff4c2;
+  background-color: #fff4c2;
 }
 
 .rank-one {
@@ -74,7 +126,7 @@ tr:hover {
 
 footer {
   text-align: center;
-  background: #222;
+  background-color: #222;
   color: white;
   padding: 20px;
   margin-top: 40px;
