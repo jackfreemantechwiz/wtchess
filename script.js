@@ -1,5 +1,12 @@
 const players = [
-  { name: "Logan", chessUsername: "logmanpower", first: 0, second: 0, third: 0 },
+  { name: "Logan Amaya", chessUsername: "logmanpower", first: 0, second: 0, third: 0 },
+  { name: "Ryan Seeley", chessUsername: "I_Love_Amaya", first: 0, second: 0, third: 0 },
+  { name: "Jonah Connor", chessUsername: "MostMediocre", first: 0, second: 0, third: 0 },
+  { name: "Lev Bryans", chessUsername: "Lev_Bryanss", first: 0, second: 0, third: 0 },
+  { name: "Nathan Gibboney", chessUsername: "nateguy321", first: 0, second: 0, third: 0 },
+  { name: "Harrison Rupp", chessUsername: "HarrisonRupp", first: 0, second: 0, third: 0 },
+  { name: "Ethan Struebel", chessUsername: "Ethanator-X", first: 0, second: 0, third: 0 },
+  { name: "Archer Webb", chessUsername: "archerwebb", first: 0, second: 0, third: 0 },
   { name: "Player 2", chessUsername: "trdij", first: 0, second: 0, third: 0 },
   { name: "Player 3", chessUsername: "mus_del", first: 0, second: 0, third: 0 },
   { name: "Player 4", chessUsername: "C1ay_Bird", first: 0, second: 0, third: 0 },
@@ -87,7 +94,7 @@ function winPercentage(player) {
     return 0;
   }
 
-  return ((player.wins / totalGames) * 100).toFixed(1);
+  return Number(((player.wins / totalGames) * 100).toFixed(1));
 }
 
 function fillEloTable() {
